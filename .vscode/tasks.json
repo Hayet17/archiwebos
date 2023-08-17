@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "install",
+			"path": "Backend",
+			"group": "clean",
+			"problemMatcher": [],
+			"label": "npm: install - Backend",
+			"detail": "install dependencies from package"
+		}
+	]
+}
