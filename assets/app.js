@@ -177,7 +177,7 @@ function creatework(){
 
 // START FUNCTIONS EVENTLISTENER
 function removeWork(event) {
-  event.preventDefault();
+  
   // Récupération de l'élément sur lequel j'ai cliqué
     const item = event.target;
     const id = item.getAttribute('data-id');
