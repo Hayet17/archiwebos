@@ -310,8 +310,17 @@ ul li a:visited{
 	left: 50px;
 }
 #modal .photos .item span.icone-remove {
-	top: 25px;
+	color: white;
+    padding-top: 10px;
+    text-align: inherit;
+    padding-left: 3px;
+    border-radius: 3px;
+    background: black;
+    height: 11px;
+    width: 14px;
+    top: 25px;
     left: 81px;
+    margin-left: -4px;
 }
 #modal .actions {
 	display: flex;
@@ -471,4 +480,19 @@ a.validajout:hover{
     text-decoration: none;
     padding: 5px 15px;
     width: 158px;
+}
+
+footer{
+	width:1410px;
+	background-color: white;
+	padding-right:200px;
+	margin-left:-200px;
+	height:50px;
+	margin-top:200px;
+
+
+}
+
+footer nav ul li{
+	padding-top:20px;
 }
