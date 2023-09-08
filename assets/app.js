@@ -40,7 +40,7 @@ function get_projects(categid='all'){
           iconeRemoveModal.classList.add('icone-remove');
           iconeRemoveModal.classList.add('fa');
           iconeRemoveModal.classList.add('fa-trash');
-          
+          iconeRemoveModal.classList.add('fa-sm');
           // Ajoute l'attribut data-id sur l'icone de suppression afin de récupérer l'id du work
           iconeRemoveModal.setAttribute('data-id', prj[i].id)
           divModal.appendChild(imgClone);
@@ -144,7 +144,8 @@ if (window.localStorage.getItem('token')) {
 let validbtn = document.querySelector("#validerajout");
 validbtn.addEventListener("click", creatework)
 
-function creatework(){
+function creatework(e){
+  e.preventDefault();
   let wimg = document.getElementById('image').files[0];
   let wtitle = document.getElementById('titre').value;
   let wcateg = document.getElementById('selectcategorie').value;
@@ -170,16 +171,27 @@ function creatework(){
       });
       const content = await rawResponse.json();
       console.log(content);
+      document.getElementById('titre').value="";
+      document.getElementById('selectcategorie').value="";
+      document.getElementById('img-upload').src="assets/icons/imageicon.png";
+      
+      document.querySelector('#modalajout').classList.add('hidden');
+      overlay.classList.add('hidden');
+      removeAllChildNodes(imgcontainer);
+      get_projects('all');
+       
     })();
 
   }
+
 }
 
 // START FUNCTIONS EVENTLISTENER
 function removeWork(event) {
-  
   // Récupération de l'élément sur lequel j'ai cliqué
+    event.preventDefault();
     const item = event.target;
+    item.parentNode.classList.add('hidden');
     const id = item.getAttribute('data-id');
     const token = window.localStorage.getItem('token');
     console.log(token);
@@ -189,6 +201,8 @@ function removeWork(event) {
       'Authorization': 'Bearer ' + token,
     }
   });
+  removeAllChildNodes(imgcontainer);
+  get_projects('all');
 }
 // END FUNCTIONS EVENTLISTENER
 
@@ -224,3 +238,4 @@ document.querySelector('#addPicture').addEventListener('click', (event) => {
   event.preventDefault();
   document.querySelector('#image').click();
 });
+
